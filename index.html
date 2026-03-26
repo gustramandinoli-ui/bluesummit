@@ -458,84 +458,61 @@
     </div>
   </section>
 
-  <!-- ========== CALCULADORA DE VALUATION ========== -->
-  <section class="section calculator" id="calculadora">
-    <div class="container">
-      <div class="calc__header" style="text-align:center;margin-bottom:56px">
-        <span class="section__label">FERRAMENTA GRATUITA</span>
-        <h2 class="section__title">Descubra o valor da sua empresa</h2>
-        <p class="section__subtitle" style="margin-left:auto;margin-right:auto">Simulação rápida baseada em múltiplos de mercado. Preencha os dados e veja o resultado.</p>
-      </div>
-      <div class="calc__card">
-        <div class="calc__steps">
-          <div class="calc__step">
-            <div class="calc__step-num">1</div>
-            <div class="calc__step-content">
-              <label class="calc__label" for="calcRevenue">Faturamento anual bruto</label>
-              <div class="calc__input-wrap">
-                <span class="calc__input-prefix">R$</span>
-                <input type="text" id="calcRevenue" class="calc__input calc__input--prefixed" placeholder="5.000.000" inputmode="numeric">
-              </div>
+  <!-- ========== COMO FUNCIONA ========== -->
+  <section class="section process" id="processo">
+    <div class="container" style="text-align:center">
+      <span class="section__label">COMO FUNCIONA</span>
+      <h2 class="section__title">Do primeiro contato ao resultado</h2>
+      <p class="section__subtitle" style="margin-left:auto;margin-right:auto">Um processo claro e eficiente para transformar a realidade financeira da sua empresa.</p>
+
+      <div class="process__timeline">
+        <div class="process__line"></div>
+        <div class="process__steps">
+          <div class="process__step">
+            <div class="process__dot">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <div class="process__card">
+              <span class="process__num">01</span>
+              <h3 class="process__title">Conversa inicial</h3>
+              <p class="process__text">Reunião gratuita para entender seu cenário, objetivos e necessidades específicas.</p>
+              <span class="process__tag">Gratuito · 30 min</span>
             </div>
           </div>
-          <div class="calc__step">
-            <div class="calc__step-num">2</div>
-            <div class="calc__step-content">
-              <label class="calc__label" for="calcEbitda">EBITDA anual (lucro operacional)</label>
-              <div class="calc__input-wrap">
-                <span class="calc__input-prefix">R$</span>
-                <input type="text" id="calcEbitda" class="calc__input calc__input--prefixed" placeholder="750.000" inputmode="numeric">
-              </div>
+          <div class="process__step">
+            <div class="process__dot">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            </div>
+            <div class="process__card">
+              <span class="process__num">02</span>
+              <h3 class="process__title">Proposta sob medida</h3>
+              <p class="process__text">Elaboramos uma proposta personalizada com escopo, prazo e investimento detalhados.</p>
+              <span class="process__tag">Em até 48h</span>
             </div>
           </div>
-          <div class="calc__step">
-            <div class="calc__step-num">3</div>
-            <div class="calc__step-content">
-              <label class="calc__label" for="calcGrowth">Crescimento anual (%)</label>
-              <input type="number" id="calcGrowth" class="calc__input" placeholder="20" min="0" max="500">
+          <div class="process__step">
+            <div class="process__dot">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+            <div class="process__card">
+              <span class="process__num">03</span>
+              <h3 class="process__title">Execução e análise</h3>
+              <p class="process__text">Nossa equipe trabalha com metodologias de mercado, mantendo você atualizado em cada etapa.</p>
+              <span class="process__tag">Acompanhamento contínuo</span>
             </div>
           </div>
-          <div class="calc__step">
-            <div class="calc__step-num">4</div>
-            <div class="calc__step-content">
-              <label class="calc__label" for="calcSector">Setor de atuação</label>
-              <select id="calcSector" class="calc__input calc__select">
-                <option value="4">Tecnologia / SaaS</option>
-                <option value="3">Saúde / Healthtech</option>
-                <option value="2.5">Serviços Financeiros</option>
-                <option value="2">Serviços Profissionais</option>
-                <option value="1.5">Varejo / E-commerce</option>
-                <option value="1.2">Indústria / Manufatura</option>
-              </select>
+          <div class="process__step">
+            <div class="process__dot">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
             </div>
-          </div>
-        </div>
-        <button class="btn btn--primary btn--full btn--lg" id="calcBtn">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
-          Calcular valuation
-        </button>
-        <div class="calc__results" id="calcResults">
-          <div class="calc__result-main">
-            <span class="calc__result-label">Valor estimado da empresa</span>
-            <span class="calc__result-value" id="calcValue">—</span>
-            <span class="calc__result-range" id="calcRange"></span>
-          </div>
-          <div class="calc__result-metrics" id="calcMetrics">
-            <div class="calc__metric">
-              <span class="calc__metric-label">Múltiplo de receita</span>
-              <span class="calc__metric-value" id="calcMultiple">—</span>
-            </div>
-            <div class="calc__metric">
-              <span class="calc__metric-label">Múltiplo EBITDA</span>
-              <span class="calc__metric-value" id="calcEbitdaMultiple">—</span>
-            </div>
-            <div class="calc__metric">
-              <span class="calc__metric-label">Margem EBITDA</span>
-              <span class="calc__metric-value" id="calcMargin">—</span>
+            <div class="process__card">
+              <span class="process__num">04</span>
+              <h3 class="process__title">Entrega e suporte</h3>
+              <p class="process__text">Apresentação dos resultados com relatório completo e suporte pós-projeto incluso.</p>
+              <span class="process__tag">Reunião + relatório</span>
             </div>
           </div>
         </div>
-        <p class="calc__disclaimer">* Estimativa simplificada. Para um valuation profissional e detalhado, <a href="#contato">fale com nossos especialistas</a>.</p>
       </div>
     </div>
   </section>

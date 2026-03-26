@@ -58,7 +58,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // ===== SCROLL REVEAL =====
 function initReveal() {
   const revealElements = document.querySelectorAll(
-    '.service-card, .dif, .pcard, .about__left, .about__content, .about__highlight, .contact__info, .contact__form, .tcard, .bcard, .faq-item, .calc__card'
+    '.service-card, .dif, .pcard, .about__left, .about__content, .about__highlight, .contact__info, .contact__form, .tcard, .bcard, .faq-item, .process__step'
   );
   revealElements.forEach(el => el.classList.add('reveal'));
 
@@ -190,71 +190,6 @@ document.querySelectorAll('.faq-item__question').forEach(btn => {
       btn.setAttribute('aria-expanded', 'true');
     }
   });
-});
-
-// ===== CALCULATOR =====
-const calcBtn = document.getElementById('calcBtn');
-const calcRevenueInput = document.getElementById('calcRevenue');
-const calcEbitdaInput = document.getElementById('calcEbitda');
-const calcGrowthInput = document.getElementById('calcGrowth');
-const calcSector = document.getElementById('calcSector');
-const calcValue = document.getElementById('calcValue');
-const calcRange = document.getElementById('calcRange');
-const calcResults = document.getElementById('calcResults');
-const calcMultiple = document.getElementById('calcMultiple');
-const calcEbitdaMultiple = document.getElementById('calcEbitdaMultiple');
-const calcMarginEl = document.getElementById('calcMargin');
-
-function formatCurrency(value) {
-  return 'R$ ' + value.toLocaleString('pt-BR', { maximumFractionDigits: 0 });
-}
-
-function formatInput(input) {
-  let raw = input.value.replace(/\D/g, '');
-  if (raw) {
-    input.value = parseInt(raw, 10).toLocaleString('pt-BR');
-  }
-}
-
-calcRevenueInput.addEventListener('input', () => formatInput(calcRevenueInput));
-calcEbitdaInput.addEventListener('input', () => formatInput(calcEbitdaInput));
-
-calcBtn.addEventListener('click', () => {
-  const rawRevenue = calcRevenueInput.value.replace(/\D/g, '');
-  const rawEbitda = calcEbitdaInput.value.replace(/\D/g, '');
-  const revenue = parseFloat(rawRevenue) || 0;
-  const ebitda = parseFloat(rawEbitda) || 0;
-  const growth = parseFloat(calcGrowthInput.value) || 0;
-  const baseMultiple = parseFloat(calcSector.value) || 2;
-
-  if (revenue <= 0) {
-    calcValue.textContent = 'Informe o faturamento';
-    calcRange.textContent = '';
-    calcResults.classList.add('active');
-    return;
-  }
-
-  // Growth bonus to multiple
-  const growthBonus = growth > 30 ? 1.5 : growth > 15 ? 1 : growth > 5 ? 0.5 : 0;
-  // Margin bonus
-  const margin = revenue > 0 ? (ebitda / revenue) * 100 : 0;
-  const marginBonus = margin > 25 ? 1 : margin > 15 ? 0.5 : 0;
-
-  const lowMultiple = baseMultiple + growthBonus + marginBonus;
-  const highMultiple = lowMultiple + 2;
-  const midMultiple = (lowMultiple + highMultiple) / 2;
-  const midValue = revenue * midMultiple;
-  const lowValue = revenue * lowMultiple;
-  const highValue = revenue * highMultiple;
-
-  const ebitdaMult = ebitda > 0 ? (midValue / ebitda) : 0;
-
-  calcValue.textContent = formatCurrency(midValue);
-  calcRange.textContent = formatCurrency(lowValue) + ' — ' + formatCurrency(highValue);
-  calcMultiple.textContent = midMultiple.toFixed(1) + 'x';
-  calcEbitdaMultiple.textContent = ebitdaMult > 0 ? ebitdaMult.toFixed(1) + 'x' : '—';
-  calcMarginEl.textContent = margin > 0 ? margin.toFixed(1) + '%' : '—';
-  calcResults.classList.add('active');
 });
 
 // ===== PARALLAX ON HERO IMAGE (desktop only) =====
