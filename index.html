@@ -609,7 +609,9 @@
             </li>
           </ul>
         </div>
-        <form class="contact__form" id="contactForm" novalidate>
+        <form class="contact__form" id="contactForm" name="contato" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+          <input type="hidden" name="form-name" value="contato">
+          <p class="hidden" style="display:none"><input name="bot-field"></p>
           <div class="form__row">
             <input type="text" class="form__input" name="nome" placeholder="Seu nome" required>
             <input type="tel" class="form__input" name="telefone" placeholder="Telefone com DDD" required>

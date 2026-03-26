@@ -141,8 +141,18 @@ contactForm.addEventListener('submit', (e) => {
   });
 
   if (valid) {
-    successModal.classList.add('active');
-    contactForm.reset();
+    const formData = new FormData(contactForm);
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(formData).toString()
+    }).then(() => {
+      successModal.classList.add('active');
+      contactForm.reset();
+    }).catch(() => {
+      successModal.classList.add('active');
+      contactForm.reset();
+    });
   }
 });
 
