@@ -55,12 +55,19 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-// ===== SCROLL REVEAL =====
+// ===== SCROLL REVEAL (STAGGERED) =====
 function initReveal() {
   const revealElements = document.querySelectorAll(
-    '.service-card, .dif, .pcard, .about__left, .about__content, .about__highlight, .contact__info, .contact__form, .tcard, .bcard, .faq-item, .process__step'
+    '.service-card, .dif, .pcard, .about__left, .about__content, .about__highlight, .contact__info, .contact__form, .tcard, .bcard, .faq-item, .process__step, .team__member, .case-card, .stat'
   );
   revealElements.forEach(el => el.classList.add('reveal'));
+
+  // Add stagger classes to grouped elements
+  document.querySelectorAll('.services__grid, .pricing__grid, .team__grid, .cases__grid, .stats__grid, .diff-row').forEach(grid => {
+    Array.from(grid.children).forEach((child, i) => {
+      child.classList.add('stagger-' + Math.min(i + 1, 4));
+    });
+  });
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -166,11 +173,13 @@ if (storedTheme === 'dark') {
   document.body.classList.add('dark');
 }
 
-themeToggle.addEventListener('click', () => {
-  document.body.classList.toggle('dark');
-  const isDark = document.body.classList.contains('dark');
-  localStorage.setItem('bs-theme', isDark ? 'dark' : 'light');
-});
+if (themeToggle) {
+  themeToggle.addEventListener('click', () => {
+    document.body.classList.toggle('dark');
+    const isDark = document.body.classList.contains('dark');
+    localStorage.setItem('bs-theme', isDark ? 'dark' : 'light');
+  });
+}
 
 // ===== FAQ ACCORDION =====
 document.querySelectorAll('.faq-item__question').forEach(btn => {
@@ -202,3 +211,192 @@ if (heroImg && window.innerWidth > 768) {
     }
   });
 }
+
+// ===== SERVICE TABS / FILTER =====
+const serviceTabs = document.querySelectorAll('.services__tab');
+const serviceCards = document.querySelectorAll('.service-card[data-category]');
+serviceTabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    serviceTabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
+    tab.classList.add('active');
+    tab.setAttribute('aria-selected', 'true');
+    const filter = tab.dataset.filter;
+    serviceCards.forEach(card => {
+      if (filter === 'all' || card.dataset.category === filter) {
+        card.classList.remove('hidden-card');
+      } else {
+        card.classList.add('hidden-card');
+      }
+    });
+  });
+});
+
+// ===== PRICING TOGGLE (MONTHLY/ANNUAL) =====
+const pricingBtns = document.querySelectorAll('.pricing__toggle-btn');
+const pcards = document.querySelectorAll('.pcard[data-monthly]');
+pricingBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    pricingBtns.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-checked', 'false'); });
+    btn.classList.add('active');
+    btn.setAttribute('aria-checked', 'true');
+    const period = btn.dataset.period;
+    pcards.forEach(card => {
+      const val = period === 'annual' ? card.dataset.annual : card.dataset.monthly;
+      const amountEl = card.querySelector('.pcard__amount');
+      if (amountEl && val) amountEl.textContent = val;
+    });
+  });
+});
+
+// ===== TESTIMONIALS CAROUSEL =====
+(function() {
+  const track = document.getElementById('carouselTrack');
+  const dotsContainer = document.getElementById('carouselDots');
+  if (!track || !dotsContainer) return;
+  const cards = track.querySelectorAll('.tcard');
+  const total = cards.length;
+  let current = 0;
+  let autoplayTimer;
+
+  // Create dots
+  for (let i = 0; i < total; i++) {
+    const dot = document.createElement('button');
+    dot.className = 'carousel__dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('role', 'tab');
+    dot.setAttribute('aria-label', 'Depoimento ' + (i + 1));
+    dot.addEventListener('click', () => goTo(i));
+    dotsContainer.appendChild(dot);
+  }
+
+  function goTo(index) {
+    current = ((index % total) + total) % total;
+    track.style.transform = 'translateX(-' + (current * 100) + '%)';
+    dotsContainer.querySelectorAll('.carousel__dot').forEach((d, i) => d.classList.toggle('active', i === current));
+    resetAutoplay();
+  }
+
+  document.querySelector('.carousel__btn--prev')?.addEventListener('click', () => goTo(current - 1));
+  document.querySelector('.carousel__btn--next')?.addEventListener('click', () => goTo(current + 1));
+
+  // Swipe support
+  let startX = 0;
+  track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+  track.addEventListener('touchend', e => {
+    const diff = startX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) goTo(current + (diff > 0 ? 1 : -1));
+  }, { passive: true });
+
+  function resetAutoplay() {
+    clearInterval(autoplayTimer);
+    autoplayTimer = setInterval(() => goTo(current + 1), 5000);
+  }
+  resetAutoplay();
+})();
+
+// ===== COOKIE CONSENT BANNER (LGPD) =====
+(function() {
+  const banner = document.getElementById('cookieBanner');
+  if (!banner || localStorage.getItem('bs-cookie-consent')) return;
+  setTimeout(() => banner.classList.add('visible'), 1500);
+
+  document.getElementById('cookieAccept')?.addEventListener('click', () => {
+    localStorage.setItem('bs-cookie-consent', 'accepted');
+    banner.classList.remove('visible');
+  });
+  document.getElementById('cookieDecline')?.addEventListener('click', () => {
+    localStorage.setItem('bs-cookie-consent', 'declined');
+    banner.classList.remove('visible');
+  });
+})();
+
+// ===== NEWSLETTER POPUP (EXIT INTENT) =====
+(function() {
+  const overlay = document.getElementById('newsletterOverlay');
+  const closeBtn = document.getElementById('newsletterClose');
+  const form = document.getElementById('newsletterForm');
+  if (!overlay) return;
+  let shown = false;
+
+  function showPopup() {
+    if (shown || sessionStorage.getItem('bs-newsletter-shown') || localStorage.getItem('bs-newsletter-sub')) return;
+    shown = true;
+    sessionStorage.setItem('bs-newsletter-shown', '1');
+    overlay.classList.add('active');
+  }
+
+  // Exit intent — mouse leaves viewport top
+  document.addEventListener('mouseout', (e) => {
+    if (e.clientY <= 0) showPopup();
+  });
+
+  function closePopup() {
+    overlay.classList.remove('active');
+  }
+
+  closeBtn?.addEventListener('click', closePopup);
+  overlay.addEventListener('click', (e) => { if (e.target === overlay) closePopup(); });
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    localStorage.setItem('bs-newsletter-sub', '1');
+    overlay.querySelector('.newsletter-popup__title').textContent = 'Inscrito com sucesso!';
+    overlay.querySelector('.newsletter-popup__text').textContent = 'Você receberá nossos insights em breve.';
+    form.style.display = 'none';
+    overlay.querySelector('.newsletter-popup__note').style.display = 'none';
+    setTimeout(closePopup, 2500);
+  });
+})();
+
+// ===== VIDEO MODAL =====
+(function() {
+  const wrapper = document.getElementById('videoWrapper');
+  const modal = document.getElementById('videoModal');
+  const closeBtn = document.getElementById('videoModalClose');
+  const iframe = document.getElementById('videoIframe');
+  if (!wrapper || !modal) return;
+
+  const videoSrc = 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1';
+
+  function openVideo() {
+    iframe.src = videoSrc;
+    modal.classList.add('active');
+  }
+  function closeVideo() {
+    modal.classList.remove('active');
+    iframe.src = '';
+  }
+
+  wrapper.addEventListener('click', openVideo);
+  wrapper.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openVideo(); } });
+  closeBtn?.addEventListener('click', closeVideo);
+  modal.addEventListener('click', (e) => { if (e.target === modal) closeVideo(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('active')) closeVideo(); });
+})();
+
+// ===== STAT COUNTER ANIMATION =====
+(function() {
+  const stats = document.querySelectorAll('.stat__number[data-count]');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const target = parseFloat(el.dataset.count);
+        const duration = 2000;
+        const start = performance.now();
+        const isDecimal = target % 1 !== 0;
+
+        function update(now) {
+          const elapsed = now - start;
+          const progress = Math.min(elapsed / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const val = target * eased;
+          el.textContent = isDecimal ? val.toFixed(1) : Math.round(val);
+          if (progress < 1) requestAnimationFrame(update);
+        }
+        requestAnimationFrame(update);
+        observer.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+  stats.forEach(s => observer.observe(s));
+})();
