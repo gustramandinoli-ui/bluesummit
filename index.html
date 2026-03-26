@@ -465,40 +465,81 @@
   <!-- ========== CALCULADORA DE VALUATION ========== -->
   <section class="section calculator" id="calculadora">
     <div class="container">
-      <div class="calc__grid">
-        <div class="calc__info">
-          <span class="section__label">FERRAMENTA GRATUITA</span>
-          <h2 class="section__title section__title--left">Calculadora de Valuation</h2>
-          <p class="calc__text">Tenha uma estimativa rápida do valor da sua empresa com base em métricas de mercado. Insira os dados ao lado e veja o resultado em tempo real.</p>
-          <p class="calc__disclaimer">* Esta é uma estimativa simplificada por múltiplo de receita. Para uma avaliação precisa, entre em contato com nossos especialistas.</p>
+      <div class="calc__header" style="text-align:center;margin-bottom:56px">
+        <span class="section__label">FERRAMENTA GRATUITA</span>
+        <h2 class="section__title">Descubra o valor da sua empresa</h2>
+        <p class="section__subtitle" style="margin-left:auto;margin-right:auto">Simulação rápida baseada em múltiplos de mercado. Preencha os dados e veja o resultado.</p>
+      </div>
+      <div class="calc__card">
+        <div class="calc__steps">
+          <div class="calc__step">
+            <div class="calc__step-num">1</div>
+            <div class="calc__step-content">
+              <label class="calc__label" for="calcRevenue">Faturamento anual bruto</label>
+              <div class="calc__input-wrap">
+                <span class="calc__input-prefix">R$</span>
+                <input type="text" id="calcRevenue" class="calc__input calc__input--prefixed" placeholder="5.000.000" inputmode="numeric">
+              </div>
+            </div>
+          </div>
+          <div class="calc__step">
+            <div class="calc__step-num">2</div>
+            <div class="calc__step-content">
+              <label class="calc__label" for="calcEbitda">EBITDA anual (lucro operacional)</label>
+              <div class="calc__input-wrap">
+                <span class="calc__input-prefix">R$</span>
+                <input type="text" id="calcEbitda" class="calc__input calc__input--prefixed" placeholder="750.000" inputmode="numeric">
+              </div>
+            </div>
+          </div>
+          <div class="calc__step">
+            <div class="calc__step-num">3</div>
+            <div class="calc__step-content">
+              <label class="calc__label" for="calcGrowth">Crescimento anual (%)</label>
+              <input type="number" id="calcGrowth" class="calc__input" placeholder="20" min="0" max="500">
+            </div>
+          </div>
+          <div class="calc__step">
+            <div class="calc__step-num">4</div>
+            <div class="calc__step-content">
+              <label class="calc__label" for="calcSector">Setor de atuação</label>
+              <select id="calcSector" class="calc__input calc__select">
+                <option value="4">Tecnologia / SaaS</option>
+                <option value="3">Saúde / Healthtech</option>
+                <option value="2.5">Serviços Financeiros</option>
+                <option value="2">Serviços Profissionais</option>
+                <option value="1.5">Varejo / E-commerce</option>
+                <option value="1.2">Indústria / Manufatura</option>
+              </select>
+            </div>
+          </div>
         </div>
-        <div class="calc__form-wrap">
-          <div class="calc__field">
-            <label class="calc__label" for="calcRevenue">Faturamento anual (R$)</label>
-            <input type="text" id="calcRevenue" class="calc__input" placeholder="Ex: 5.000.000" inputmode="numeric">
-          </div>
-          <div class="calc__field">
-            <label class="calc__label" for="calcProfit">Margem de lucro (%)</label>
-            <input type="number" id="calcProfit" class="calc__input" placeholder="Ex: 15" min="0" max="100">
-          </div>
-          <div class="calc__field">
-            <label class="calc__label" for="calcSector">Setor de atuação</label>
-            <select id="calcSector" class="calc__input calc__select">
-              <option value="3">Tecnologia (3x–5x)</option>
-              <option value="2">Serviços (2x–4x)</option>
-              <option value="1.5">Varejo (1.5x–3x)</option>
-              <option value="2.5">Saúde (2.5x–4.5x)</option>
-              <option value="1">Indústria (1x–2.5x)</option>
-            </select>
-          </div>
-          <div class="calc__result" id="calcResult">
-            <span class="calc__result-label">Estimativa de valor</span>
-            <span class="calc__result-value" id="calcValue">R$ 0</span>
+        <button class="btn btn--primary btn--full btn--lg" id="calcBtn">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="M22 4L12 14.01l-3-3"/></svg>
+          Calcular valuation
+        </button>
+        <div class="calc__results" id="calcResults">
+          <div class="calc__result-main">
+            <span class="calc__result-label">Valor estimado da empresa</span>
+            <span class="calc__result-value" id="calcValue">—</span>
             <span class="calc__result-range" id="calcRange"></span>
           </div>
-          <button class="btn btn--primary btn--full" id="calcBtn">Calcular valuation</button>
-          <a href="#contato" class="calc__cta-link">Quer um valuation profissional? Fale conosco →</a>
+          <div class="calc__result-metrics" id="calcMetrics">
+            <div class="calc__metric">
+              <span class="calc__metric-label">Múltiplo de receita</span>
+              <span class="calc__metric-value" id="calcMultiple">—</span>
+            </div>
+            <div class="calc__metric">
+              <span class="calc__metric-label">Múltiplo EBITDA</span>
+              <span class="calc__metric-value" id="calcEbitdaMultiple">—</span>
+            </div>
+            <div class="calc__metric">
+              <span class="calc__metric-label">Margem EBITDA</span>
+              <span class="calc__metric-value" id="calcMargin">—</span>
+            </div>
+          </div>
         </div>
+        <p class="calc__disclaimer">* Estimativa simplificada. Para um valuation profissional e detalhado, <a href="#contato">fale com nossos especialistas</a>.</p>
       </div>
     </div>
   </section>
