@@ -257,9 +257,9 @@ calcBtn.addEventListener('click', () => {
   calcResults.classList.add('active');
 });
 
-// ===== PARALLAX ON HERO IMAGE =====
+// ===== PARALLAX ON HERO IMAGE (desktop only) =====
 const heroImg = document.querySelector('.hero__img');
-if (heroImg) {
+if (heroImg && window.innerWidth > 768) {
   window.addEventListener('scroll', () => {
     const scrollY = window.scrollY;
     if (scrollY < window.innerHeight) {
