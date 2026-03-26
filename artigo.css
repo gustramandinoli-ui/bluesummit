@@ -1,0 +1,46 @@
+/* ===== ARTIGO — Página de artigo individual ===== */
+
+/* Header */
+.artigo-header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,0,0,.06);padding:16px 0}
+.artigo-header__inner{display:flex;align-items:center;justify-content:space-between}
+.artigo-back{font-size:.9rem;color:#4A9FD7;text-decoration:none;font-weight:500;transition:color .2s}
+.artigo-back:hover{color:#2563eb}
+
+/* Hero */
+.artigo-hero{position:relative;height:420px;background-size:cover;background-position:center;margin-top:64px}
+.artigo-hero__overlay{position:absolute;inset:0;background:linear-gradient(transparent 20%,rgba(10,20,32,.85));display:flex;align-items:flex-end;padding-bottom:48px}
+.artigo-hero__title{font-family:'DM Sans',sans-serif;font-size:2.8rem;font-weight:800;color:#fff;line-height:1.15;max-width:720px;margin:16px 0 0}
+.artigo-tag{display:inline-block;background:#4A9FD7;color:#fff;font-size:.75rem;font-weight:600;letter-spacing:1px;padding:6px 16px;border-radius:20px;text-transform:uppercase}
+.artigo-meta{display:flex;gap:8px;color:rgba(255,255,255,.7);font-size:.9rem;margin-top:16px}
+
+/* Content */
+.artigo-content{padding:64px 0 80px}
+.artigo-container{max-width:740px;margin:0 auto}
+.artigo-lead{font-size:1.2rem;line-height:1.8;color:#374151;font-weight:500;margin-bottom:40px;border-left:3px solid #4A9FD7;padding-left:20px}
+.artigo-content h2{font-family:'DM Sans',sans-serif;font-size:1.6rem;font-weight:700;color:#0d1929;margin:48px 0 16px}
+.artigo-content h3{font-family:'DM Sans',sans-serif;font-size:1.25rem;font-weight:600;color:#1a2744;margin:32px 0 12px}
+.artigo-content p{font-size:1.05rem;line-height:1.85;color:#4b5563;margin-bottom:16px}
+.artigo-content ul{margin:16px 0 24px 24px;color:#4b5563}
+.artigo-content li{font-size:1.05rem;line-height:1.85;margin-bottom:8px}
+.artigo-content strong{color:#1a2744}
+
+/* CTA box */
+.artigo-cta{margin-top:56px;background:linear-gradient(135deg,#0d1929,#1a2744);border-radius:16px;padding:40px;text-align:center}
+.artigo-cta h3{color:#fff;font-family:'DM Sans',sans-serif;font-size:1.4rem;font-weight:700;margin:0 0 8px}
+.artigo-cta p{color:rgba(255,255,255,.7);margin-bottom:24px}
+.artigo-cta .btn{display:inline-block}
+
+/* Footer */
+.artigo-footer{background:#0a1420;padding:32px 0;text-align:center}
+.artigo-footer p{color:rgba(255,255,255,.4);font-size:.85rem;margin:0}
+
+/* Responsive */
+@media(max-width:768px){
+  .artigo-hero{height:320px}
+  .artigo-hero__title{font-size:1.8rem}
+  .artigo-content{padding:40px 0 56px}
+  .artigo-lead{font-size:1.05rem}
+  .artigo-content h2{font-size:1.35rem}
+  .artigo-cta{padding:28px 20px}
+  .artigo-back{font-size:.8rem}
+}

@@ -330,7 +330,7 @@ body.dark .partners__track::after{background:linear-gradient(90deg,transparent 0
 /* ===== BLOG / ARTICLES ===== */
 .blog{background:#fff;padding:100px 0}
 .blog__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;text-align:left}
-.bcard{background:#fff;border:1px solid #e8eef6;border-radius:20px;overflow:hidden;transition:all .3s;display:flex;flex-direction:column}
+.bcard{background:#fff;border:1px solid #e8eef6;border-radius:20px;overflow:hidden;transition:all .3s;display:flex;flex-direction:column;text-decoration:none;color:inherit;cursor:pointer}
 .bcard:hover{box-shadow:0 16px 48px rgba(26,39,64,.08);transform:translateY(-4px)}
 .bcard__img{height:200px;background-size:cover;background-position:center;transition:transform .4s}
 .bcard:hover .bcard__img{transform:scale(1.05)}
