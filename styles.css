@@ -192,7 +192,7 @@ button,input,select,textarea{font-family:inherit;font-size:inherit;border:none;o
 
 /* ===== FOOTER ===== */
 .footer{background:#0a1420;padding:64px 0 0}
-.footer__grid{display:grid;grid-template-columns:1.5fr 1fr 1.5fr;gap:48px;padding-bottom:48px}
+.footer__grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.5fr;gap:48px;padding-bottom:48px}
 .footer__brand .logo{margin-bottom:16px}
 .footer__desc{color:rgba(255,255,255,.45);font-size:.9rem;line-height:1.7;max-width:320px}
 .footer__heading{font-size:.75rem;font-weight:700;letter-spacing:2px;color:rgba(255,255,255,.5);text-transform:uppercase;margin-bottom:20px}
