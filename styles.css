@@ -178,6 +178,14 @@ button,input,select,textarea{font-family:inherit;font-size:inherit;border:none;o
 .form__select option{background:#0d1929;color:#fff}
 .form__textarea{resize:vertical;min-height:100px}
 
+/* Consent checkbox */
+.consent-label{display:flex;align-items:flex-start;gap:14px;background:rgba(59,155,255,.08);border:1.5px solid rgba(59,155,255,.2);border-radius:12px;padding:16px 18px;margin:18px 0 24px;cursor:pointer;transition:all .2s}
+.consent-label:hover{background:rgba(59,155,255,.12);border-color:rgba(59,155,255,.35)}
+.consent-checkbox{width:20px;height:20px;min-width:20px;accent-color:#3B9BFF;cursor:pointer;margin-top:2px}
+.consent-text{font-size:.93rem;color:rgba(255,255,255,.85);line-height:1.6}
+.consent-text a{color:#3B9BFF;text-decoration:underline;font-weight:600;transition:color .2s}
+.consent-text a:hover{color:#00D4AA}
+
 
 
 
@@ -415,6 +423,9 @@ body.dark .modal__text{color:#8896a6}
   .hero__subtitle{font-size:.92rem;margin-bottom:32px}
   .hero__tabs{display:none}
   .form__row{grid-template-columns:1fr}
+  .consent-label{padding:14px 16px;margin:14px 0 18px;gap:12px}
+  .consent-checkbox{width:18px;height:18px}
+  .consent-text{font-size:.88rem}
   .footer__grid{grid-template-columns:1fr;gap:32px}
 
   .section{padding:48px 0}
