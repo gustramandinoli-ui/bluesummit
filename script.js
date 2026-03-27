@@ -58,12 +58,12 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // ===== SCROLL REVEAL (STAGGERED) =====
 function initReveal() {
   const revealElements = document.querySelectorAll(
-    '.service-card, .dif, .pcard, .about__left, .about__content, .about__highlight, .contact__info, .contact__form, .tcard, .bcard, .faq-item, .process__step, .team__member, .case-card, .stat'
+    '.service-card, .dif, .pcard, .about__left, .about__content, .about__highlight, .contact__info, .contact__form, .tcard, .bcard, .faq-item, .process__step'
   );
   revealElements.forEach(el => el.classList.add('reveal'));
 
   // Add stagger classes to grouped elements
-  document.querySelectorAll('.services__grid, .pricing__grid, .team__grid, .cases__grid, .stats__grid, .diff-row').forEach(grid => {
+  document.querySelectorAll('.services__grid, .pricing__grid, .diff-row').forEach(grid => {
     Array.from(grid.children).forEach((child, i) => {
       child.classList.add('stagger-' + Math.min(i + 1, 4));
     });
@@ -81,33 +81,7 @@ function initReveal() {
 }
 initReveal();
 
-// ===== COUNTER ANIMATION =====
-function animateCounters() {
-  const counters = document.querySelectorAll('[data-count]');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const el = entry.target;
-        const target = parseInt(el.dataset.count, 10);
-        const duration = 2000;
-        const start = performance.now();
 
-        function update(now) {
-          const elapsed = now - start;
-          const progress = Math.min(elapsed / duration, 1);
-          const eased = 1 - Math.pow(1 - progress, 3);
-          el.textContent = Math.round(target * eased);
-          if (progress < 1) requestAnimationFrame(update);
-        }
-        requestAnimationFrame(update);
-        observer.unobserve(el);
-      }
-    });
-  }, { threshold: 0.5 });
-
-  counters.forEach(c => observer.observe(c));
-}
-animateCounters();
 
 // ===== CONTACT FORM + SUCCESS MODAL =====
 const contactForm = document.getElementById('contactForm');
@@ -222,41 +196,7 @@ if (heroImg && window.innerWidth > 768) {
   });
 }
 
-// ===== SERVICE TABS / FILTER =====
-const serviceTabs = document.querySelectorAll('.services__tab');
-const serviceCards = document.querySelectorAll('.service-card[data-category]');
-serviceTabs.forEach(tab => {
-  tab.addEventListener('click', () => {
-    serviceTabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
-    tab.classList.add('active');
-    tab.setAttribute('aria-selected', 'true');
-    const filter = tab.dataset.filter;
-    serviceCards.forEach(card => {
-      if (filter === 'all' || card.dataset.category === filter) {
-        card.classList.remove('hidden-card');
-      } else {
-        card.classList.add('hidden-card');
-      }
-    });
-  });
-});
 
-// ===== PRICING TOGGLE (MONTHLY/ANNUAL) =====
-const pricingBtns = document.querySelectorAll('.pricing__toggle-btn');
-const pcards = document.querySelectorAll('.pcard[data-monthly]');
-pricingBtns.forEach(btn => {
-  btn.addEventListener('click', () => {
-    pricingBtns.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-checked', 'false'); });
-    btn.classList.add('active');
-    btn.setAttribute('aria-checked', 'true');
-    const period = btn.dataset.period;
-    pcards.forEach(card => {
-      const val = period === 'annual' ? card.dataset.annual : card.dataset.monthly;
-      const amountEl = card.querySelector('.pcard__amount');
-      if (amountEl && val) amountEl.textContent = val;
-    });
-  });
-});
 
 // ===== TESTIMONIALS CAROUSEL =====
 (function() {
@@ -357,56 +297,4 @@ pricingBtns.forEach(btn => {
   });
 })();
 
-// ===== VIDEO MODAL =====
-(function() {
-  const wrapper = document.getElementById('videoWrapper');
-  const modal = document.getElementById('videoModal');
-  const closeBtn = document.getElementById('videoModalClose');
-  const iframe = document.getElementById('videoIframe');
-  if (!wrapper || !modal) return;
 
-  const videoSrc = 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1';
-
-  function openVideo() {
-    iframe.src = videoSrc;
-    modal.classList.add('active');
-  }
-  function closeVideo() {
-    modal.classList.remove('active');
-    iframe.src = '';
-  }
-
-  wrapper.addEventListener('click', openVideo);
-  wrapper.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openVideo(); } });
-  closeBtn?.addEventListener('click', closeVideo);
-  modal.addEventListener('click', (e) => { if (e.target === modal) closeVideo(); });
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('active')) closeVideo(); });
-})();
-
-// ===== STAT COUNTER ANIMATION =====
-(function() {
-  const stats = document.querySelectorAll('.stat__number[data-count]');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const el = entry.target;
-        const target = parseFloat(el.dataset.count);
-        const duration = 2000;
-        const start = performance.now();
-        const isDecimal = target % 1 !== 0;
-
-        function update(now) {
-          const elapsed = now - start;
-          const progress = Math.min(elapsed / duration, 1);
-          const eased = 1 - Math.pow(1 - progress, 3);
-          const val = target * eased;
-          el.textContent = isDecimal ? val.toFixed(1) : Math.round(val);
-          if (progress < 1) requestAnimationFrame(update);
-        }
-        requestAnimationFrame(update);
-        observer.unobserve(el);
-      }
-    });
-  }, { threshold: 0.5 });
-  stats.forEach(s => observer.observe(s));
-})();
