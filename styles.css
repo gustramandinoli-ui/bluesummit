@@ -548,6 +548,15 @@ body.dark .modal__text{color:#8896a6}
   .tcard__avatar{width:32px;height:32px;min-width:32px;font-size:.65rem}
   .tcard__name{font-size:.8rem}
   .tcard__role{font-size:.7rem}
+  
+  .carousel__track{scroll-snap-type:x mandatory}
+  .carousel .tcard{min-width:85%;flex-shrink:0;padding:18px 16px;scroll-snap-align:start}
+  .carousel__controls{margin-top:20px;gap:12px}
+  .carousel__btn{width:40px;height:40px}
+  .carousel__btn svg{width:18px;height:18px}
+  .carousel__dots{gap:6px}
+  .carousel__dot{width:8px;height:8px}
+  .carousel__dot.active{width:24px}
 }
 
 /* ===== CAROUSEL / TESTIMONIALS ===== */
