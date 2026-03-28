@@ -471,13 +471,22 @@ body.dark .modal__text{color:#8896a6}
 
   .testimonials__grid{gap:0}
   .testimonials{padding:60px 0}
-  .tcard{padding:20px 16px;border-radius:14px;max-height:360px;overflow-y:auto}
+  .tcard{padding:18px 14px;border-radius:14px;max-height:none}
   .tcard__stars{font-size:.9rem;margin-bottom:10px;letter-spacing:1px}
   .tcard__text{font-size:.82rem;line-height:1.6;margin-bottom:14px}
   .tcard__author{padding-top:12px;gap:10px}
   .tcard__avatar{width:36px;height:36px;min-width:36px;font-size:.72rem}
   .tcard__name{font-size:.85rem}
   .tcard__role{font-size:.75rem}
+  
+  .carousel__track{display:grid;grid-template-columns:1fr;grid-auto-flow:row}
+  .carousel .tcard{min-width:100%;flex-shrink:0;padding:18px 14px}
+  .carousel__controls{margin-top:18px;gap:10px}
+  .carousel__btn{width:38px;height:38px}
+  .carousel__btn svg{width:17px;height:17px}
+  .carousel__dots{gap:5px}
+  .carousel__dot{width:7px;height:7px}
+  .carousel__dot.active{width:22px}
 
   .blog__grid{grid-template-columns:1fr;gap:14px}
   .bcard{border-radius:16px}
@@ -541,22 +550,22 @@ body.dark .modal__text{color:#8896a6}
   body.dark .partners__track::after{background:linear-gradient(90deg,transparent 0%,#0b1120 100%)}
   .partners__slide{gap:16px;animation:scrollPartners 25s linear infinite}
   
-  .tcard{padding:16px 14px;border-radius:12px;max-height:320px}
-  .tcard__stars{font-size:.85rem;margin-bottom:8px;letter-spacing:.5px}
-  .tcard__text{font-size:.78rem;line-height:1.5;margin-bottom:12px}
+  .testimonials{padding:40px 0}
+  .tcard{padding:14px 12px;border-radius:12px;max-height:none}
+  .tcard__stars{font-size:.8rem;margin-bottom:8px;letter-spacing:0px}
+  .tcard__text{font-size:.75rem;line-height:1.5;margin-bottom:12px}
   .tcard__author{padding-top:10px;gap:8px}
-  .tcard__avatar{width:32px;height:32px;min-width:32px;font-size:.65rem}
-  .tcard__name{font-size:.8rem}
-  .tcard__role{font-size:.7rem}
+  .tcard__avatar{width:28px;height:28px;min-width:28px;font-size:.6rem}
+  .tcard__name{font-size:.75rem}
+  .tcard__role{font-size:.65rem}
   
-  .carousel__track{scroll-snap-type:x mandatory}
-  .carousel .tcard{min-width:85%;flex-shrink:0;padding:18px 16px;scroll-snap-align:start}
-  .carousel__controls{margin-top:20px;gap:12px}
-  .carousel__btn{width:40px;height:40px}
-  .carousel__btn svg{width:18px;height:18px}
-  .carousel__dots{gap:6px}
-  .carousel__dot{width:8px;height:8px}
-  .carousel__dot.active{width:24px}
+  .carousel .tcard{padding:14px 12px}
+  .carousel__controls{margin-top:14px;gap:8px}
+  .carousel__btn{width:32px;height:32px}
+  .carousel__btn svg{width:14px;height:14px}
+  .carousel__dots{gap:4px}
+  .carousel__dot{width:5px;height:5px}
+  .carousel__dot.active{width:18px}
 }
 
 /* ===== CAROUSEL / TESTIMONIALS ===== */
