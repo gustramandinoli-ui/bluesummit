@@ -1,0 +1,20 @@
+<svg viewBox="0 0 300 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Ícone Logo -->
+  <g transform="translate(20, 10)">
+    <path d="M0 36L16 8L32 36H0Z" fill="#4A9FD7"/>
+    <path d="M16 36L34 2L50 36H16Z" fill="#2EB5F5"/>
+    <path d="M12 16L16 8L20 16L18.2 14.5L16 17.5L13.8 14.5Z" fill="#fff"/>
+    <path d="M30 10L34 2L38 10L36.2 8.5L34 11.5L31.8 8.5Z" fill="#fff"/>
+  </g>
+  
+  <!-- Nome da empresa -->
+  <g transform="translate(85, 12)">
+    <!-- "Blue" em azul -->
+    <text x="0" y="22" font-family="DM Sans, sans-serif" font-size="26" font-weight="800" fill="#4A9FD7">Blue</text>
+    <!-- "Summit" em branco -->
+    <text x="75" y="22" font-family="DM Sans, sans-serif" font-size="26" font-weight="800" fill="#fff">Summit</text>
+    
+    <!-- Tagline "SERVIÇOS FINANCEIROS" -->
+    <text x="0" y="44" font-family="Inter, sans-serif" font-size="8" font-weight="600" fill="#fff" letter-spacing="2" text-transform="uppercase">SERVIÇOS FINANCEIROS</text>
+  </g>
+</svg>

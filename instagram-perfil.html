@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blue Summit — Foto de Perfil Instagram</title>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18046482128"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'AW-18046482128');
+  </script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'DM Sans', 'Inter', system-ui, sans-serif;
+      background: #f5f5f5;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      padding: 40px;
+      min-height: 100vh;
+    }
+
+    .section-title {
+      color: #333;
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-top: 30px;
+    }
+
+    .container-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+      width: 100%;
+    }
+
+    .profile-option {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .profile-preview {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      border: 2px solid #eee;
+      border-radius: 8px;
+      padding: 20px;
+      min-height: 280px;
+    }
+
+    /* Quadrada */
+    .profile-square {
+      width: 280px;
+      height: 280px;
+      background: #fff;
+      border-radius: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .profile-square svg {
+      width: 140px;
+      height: 105px;
+    }
+
+    /* Redonda (círculo) */
+    .profile-circle {
+      width: 280px;
+      height: 280px;
+      background: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .profile-circle svg {
+      width: 140px;
+      height: 105px;
+    }
+
+    /* Com fundo colorido sutil */
+    .profile-gradient-light {
+      width: 280px;
+      height: 280px;
+      background: linear-gradient(135deg, #f0f7ff 0%, #e0f2ff 100%);
+      border-radius: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .profile-gradient-light svg {
+      width: 140px;
+      height: 105px;
+    }
+
+    /* Com logo e texto */
+    .profile-with-text {
+      width: 280px;
+      height: 280px;
+      background: #fff;
+      border-radius: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .profile-with-text svg {
+      width: 80px;
+      height: 60px;
+    }
+
+    .profile-text {
+      text-align: center;
+    }
+
+    .profile-name {
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: #1a1a2e;
+    }
+
+    .profile-name .blue {
+      color: #2EB5F5;
+    }
+
+    .profile-tagline {
+      font-size: 0.6rem;
+      font-weight: 600;
+      color: #666;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .label {
+      color: #666;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .download-info {
+      background: #f0f7ff;
+      border: 1px solid #2EB5F5;
+      border-radius: 8px;
+      padding: 16px;
+      color: #1a1a2e;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin-top: 20px;
+    }
+
+    .download-info strong {
+      color: #2EB5F5;
+    }
+
+    .copy-svg {
+      background: #2EB5F5;
+      color: #fff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 12px;
+      transition: background 0.2s;
+    }
+
+    .copy-svg:hover {
+      background: #1a7de8;
+    }
+
+    .copy-svg.copied {
+      background: #00b981;
+    }
+
+    @media (max-width: 768px) {
+      .container-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div>
+    <h1 style="color: #1a1a2e; margin-bottom: 10px;">Blue Summit</h1>
+    <p style="color: #666; font-size: 1rem;">Foto de Perfil para Instagram</p>
+  </div>
+
+  <div class="section-title">VERSÕES RECOMENDADAS</div>
+
+  <div class="container-grid">
+
+    <!-- Ícone em fundo branco puro quadrado -->
+    <div class="profile-option">
+      <div class="profile-preview">
+        <div class="profile-square">
+          <svg viewBox="0 0 50 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 36L16 8L32 36H0Z" fill="#4A9FD7"/>
+            <path d="M16 36L34 2L50 36H16Z" fill="#2EB5F5"/>
+            <path d="M12 16L16 8L20 16L18.2 14.5L16 17.5L13.8 14.5Z" fill="#fff"/>
+            <path d="M30 10L34 2L38 10L36.2 8.5L34 11.5L31.8 8.5Z" fill="#fff"/>
+          </svg>
+        </div>
+      </div>
+      <span class="label">Ícone com fundo branco</span>
+    </div>
+
+    <!-- Ícone em círculo branco -->
+    <div class="profile-option">
+      <div class="profile-preview">
+        <div class="profile-circle">
+          <svg viewBox="0 0 50 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 36L16 8L32 36H0Z" fill="#4A9FD7"/>
+            <path d="M16 36L34 2L50 36H16Z" fill="#2EB5F5"/>
+            <path d="M12 16L16 8L20 16L18.2 14.5L16 17.5L13.8 14.5Z" fill="#fff"/>
+            <path d="M30 10L34 2L38 10L36.2 8.5L34 11.5L31.8 8.5Z" fill="#fff"/>
+          </svg>
+        </div>
+      </div>
+      <span class="label">Ícone redondo (mais moderno)</span>
+    </div>
+
+    <!-- Ícone com fundo azul claro -->
+    <div class="profile-option">
+      <div class="profile-preview">
+        <div class="profile-gradient-light">
+          <svg viewBox="0 0 50 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 36L16 8L32 36H0Z" fill="#4A9FD7"/>
+            <path d="M16 36L34 2L50 36H16Z" fill="#2EB5F5"/>
+            <path d="M12 16L16 8L20 16L18.2 14.5L16 17.5L13.8 14.5Z" fill="#fff"/>
+            <path d="M30 10L34 2L38 10L36.2 8.5L34 11.5L31.8 8.5Z" fill="#fff"/>
+          </svg>
+        </div>
+      </div>
+      <span class="label">Com fundo azul sutil</span>
+    </div>
+
+    <!-- Ícone com texto -->
+    <div class="profile-option">
+      <div class="profile-preview">
+        <div class="profile-with-text">
+          <svg viewBox="0 0 50 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 36L16 8L32 36H0Z" fill="#4A9FD7"/>
+            <path d="M16 36L34 2L50 36H16Z" fill="#2EB5F5"/>
+            <path d="M12 16L16 8L20 16L18.2 14.5L16 17.5L13.8 14.5Z" fill="#fff"/>
+            <path d="M30 10L34 2L38 10L36.2 8.5L34 11.5L31.8 8.5Z" fill="#fff"/>
+          </svg>
+          <div class="profile-text">
+            <div class="profile-name"><span class="blue">Blue</span>Summit</div>
+            <div class="profile-tagline">Financeiro</div>
+          </div>
+        </div>
+      </div>
+      <span class="label">Ícone com nome (compacto)</span>
+    </div>
+
+  </div>
+
+  <div class="download-info">
+    <strong>💡 Dicas para Instagram:</strong>
+    <ul style="margin-left: 20px; margin-top: 8px;">
+      <li><strong>Recomendação:</strong> Use a versão <strong>redonda</strong> (2ª opção) - a plataforma corta para círculo automaticamente</li>
+      <li><strong>Tamanho ideal:</strong> 1080x1080px</li>
+      <li><strong>Formato:</strong> Salve como PNG com fundo transparente quando possível</li>
+      <li><strong>Simples é melhor:</strong> Ícone sozinho é mais profissional</li>
+    </ul>
+  </div>
+
+  <!-- SVG para copiar -->
+  <div style="margin-top: 40px; padding: 20px; background: #f0f7ff; border-radius: 8px;">
+    <h3 style="color: #1a1a2e; margin-bottom: 12px;">📋 SVG para Copiar</h3>
+    <textarea id="svgCode" style="width: 100%; height: 120px; padding: 12px; font-family: 'Courier New', monospace; font-size: 0.85rem; border: 1px solid #2EB5F5; border-radius: 6px; resize: none; color: #1a1a2e;" readonly><svg viewBox="0 0 50 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 36L16 8L32 36H0Z" fill="#4A9FD7"/>
+  <path d="M16 36L34 2L50 36H16Z" fill="#2EB5F5"/>
+  <path d="M12 16L16 8L20 16L18.2 14.5L16 17.5L13.8 14.5Z" fill="#fff"/>
+  <path d="M30 10L34 2L38 10L36.2 8.5L34 11.5L31.8 8.5Z" fill="#fff"/>
+</svg></textarea>
+    <button class="copy-svg" onclick="copySVG()">Copiar SVG</button>
+  </div>
+
+  <script>
+    function copySVG() {
+      const textarea = document.getElementById('svgCode');
+      textarea.select();
+      document.execCommand('copy');
+      
+      const btn = event.target;
+      const originalText = btn.textContent;
+      btn.textContent = 'Copiado! ✓';
+      btn.classList.add('copied');
+      
+      setTimeout(() => {
+        btn.textContent = originalText;
+        btn.classList.remove('copied');
+      }, 2000);
+    }
+  </script>
+
+</body>
+</html>

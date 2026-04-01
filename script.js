@@ -116,6 +116,17 @@ contactForm.addEventListener('submit', (e) => {
 
   if (valid) {
     const formData = new FormData(contactForm);
+
+    // Dispara conversões do Google Ads diretamente
+    if (typeof gtag === 'function') {
+      gtag('event', 'conversion', {
+        'send_to': 'AW-18046482128/oPZDCOat-5McENDtnZ1D'
+      });
+      gtag('event', 'conversion', {
+        'send_to': 'AW-18046482128/zcljCMroh5EcENDtnZ1D'
+      });
+    }
+
     fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
