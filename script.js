@@ -123,13 +123,12 @@ contactForm.addEventListener('submit', (e) => {
       body: new URLSearchParams(formData).toString()
     }).then((response) => {
       if (response.ok) {
-        // Dispara conversões do Google Ads somente após envio bem-sucedido
+        // Dispara conversão do Google Ads somente após envio bem-sucedido
         if (typeof gtag === 'function') {
           gtag('event', 'conversion', {
-            'send_to': 'AW-18046482128/oPZDCOat-5McENDtnZ1D'
-          });
-          gtag('event', 'conversion', {
-            'send_to': 'AW-18046482128/zcljCMroh5EcENDtnZ1D'
+            'send_to': 'AW-18046482128/MfHUCMD7tZUcENDtnZ1D',
+            'value': 1.0,
+            'currency': 'BRL'
           });
         }
       }
