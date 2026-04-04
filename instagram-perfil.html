@@ -196,8 +196,78 @@
     }
 
     @media (max-width: 768px) {
+      body {
+        padding: 20px;
+        gap: 24px;
+      }
+
       .container-grid {
         grid-template-columns: 1fr;
+      }
+
+      .profile-square,
+      .profile-circle,
+      .profile-gradient-light,
+      .profile-with-text {
+        width: 220px;
+        height: 220px;
+      }
+
+      .profile-square svg,
+      .profile-circle svg,
+      .profile-gradient-light svg {
+        width: 110px;
+        height: 82px;
+      }
+
+      .profile-with-text svg {
+        width: 64px;
+        height: 48px;
+      }
+
+      .profile-preview {
+        min-height: 220px;
+        padding: 16px;
+      }
+
+      .section-title {
+        font-size: 1rem;
+      }
+
+      .download-info {
+        font-size: .85rem;
+        padding: 14px;
+      }
+
+      h1 {
+        font-size: 1.4rem !important;
+      }
+    }
+
+    @media (max-width: 400px) {
+      body {
+        padding: 16px;
+        gap: 20px;
+      }
+
+      .profile-square,
+      .profile-circle,
+      .profile-gradient-light,
+      .profile-with-text {
+        width: 180px;
+        height: 180px;
+      }
+
+      .profile-square svg,
+      .profile-circle svg,
+      .profile-gradient-light svg {
+        width: 90px;
+        height: 67px;
+      }
+
+      .profile-preview {
+        min-height: 180px;
+        padding: 12px;
       }
     }
   </style>
